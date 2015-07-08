@@ -1,0 +1,47 @@
+Last login: Sun Sep 14 14:07:25 on ttys000
+Santiagos-MacBook-Pro:~ santiagovalenciavargas$ cd /Users/santiagovalenciavargas/Documents/UvA/Semester\ I/Software\ Testing/Labs/Reporsitory/Week\ 2/Individual/Santiago/
+Santiagos-MacBook-Pro:Santiago santiagovalenciavargas$ ghci
+GHCi, version 7.8.3: http://www.haskell.org/ghc/  :? for help
+Loading package ghc-prim ... linking ... done.
+Loading package integer-gmp ... linking ... done.
+Loading package base ... linking ... done.
+Prelude> :l Lab2
+[1 of 1] Compiling Lab2             ( Lab2.hs, interpreted )
+Ok, modules loaded: Lab2.
+*Lab2> isPermutation [1,2,3] [1..1]
+Loading package array-0.5.0.0 ... linking ... done.
+Loading package deepseq-1.3.0.2 ... linking ... done.
+Loading package old-locale-1.0.0.6 ... linking ... done.
+Loading package time-1.4.2 ... linking ... done.
+Loading package random-1.0.1.1 ... linking ... done.
+False
+*Lab2> isPermutation [1,2,3] [1..1000]
+True
+*Lab2> isPermutation [1,2,3] [1..90]
+True
+*Lab2> isPermutation [1,2,3] [3,4,1,4,2,5]
+True
+*Lab2> isPermutation [] [1,2,3]
+True
+*Lab2> isPermutation [1,2,3] []
+*** Exception: Second list empty
+*Lab2> isPermutation [] []
+*** Exception: Second list empty
+*Lab2> isPermutation [1,2,3] [2,1,3]
+True
+*Lab2> isPermutation [1,2,3] [1,2,3]
+True
+*Lab2> isPermutation ["Santiago","Kevin","Rene","Sebastian"] ["Rene","Kevin","Sebastian","Santiago"]
+True
+*Lab2> isPermutation ["Santiago","Kevin","Rene","Sebastian"] ["Rene","Kevin","Sebastian"]
+False
+*Lab2> isPermutation ["Santiago","Rene","Sebastian"] ["Rene","Kevin","Sebastian"]
+False
+*Lab2> isPermutation [False,True] [True,False]
+True
+*Lab2> isPermutation [False,True] []
+*** Exception: Second list empty
+*Lab2> isPermutation [False,True] [True]
+False
+*Lab2> isPermutation [False] [True,False]
+True
