@@ -38,8 +38,6 @@ testSudoku' n = hspec $ do
 -- generate Random numbers on each position of the grid, which would result 
 -- in many inconsistent Sudokus!  
 
--- Time Spent: 2,5 hours
-
 
 
 ---------------------------
@@ -65,8 +63,6 @@ testProblem' n = hspec $ do
 
 unremovable :: Node -> (Row,Column) -> Bool
 unremovable n x = uniqueSol (eraseN n x)
-
--- Time spent: 2 hours
 
 
 
@@ -109,8 +105,6 @@ genBlocks = [[ (r',c') | r' <- r, c' <- c] | r <- blocks, c <- blocks]
 -- Therefore i come to the conclusion, that removing 4 is possible for some cases, but 5 is impossible,
 -- since there are two many variables.
 
--- Time Spent: 3,5 hours
-
 
 
 ---------------------------
@@ -122,4 +116,3 @@ genBlocks = [[ (r',c') | r' <- r, c' <- c] | r <- blocks, c <- blocks]
 -- use 'solveAndShow example1' to show the solution for the given Sudoku
 -- use 'main' to generate a Random NRC Problem
 
--- Time Spent: 1,5 hours

@@ -65,9 +65,52 @@ prop_remGTmod' b e m = if b == 0 || e == 0 || m == 0
 	then True
 	else expM (b^4) (e^4) (m^2) <= (m^2)
 
-
-
-------------------------------
+-------------
 -- Exercise 3
-------------------------------
+-------------
 
+prop_isNotPrime :: Bool
+prop_isNotPrime = (not . or) $ map isPrime (take 10000 composites)
+
+prop_primeRemainder :: Bool
+prop_primeRemainder = and $ map isPrime $ [2..last testPrimes] \\ testPrimes
+	where
+		testPrimes = take 10000 composites
+
+composites :: [Integer]
+composites = complementPrimes 2 []
+	where
+		complementPrimes n pms = 
+			let 
+				currentPrimes = take 100 $ (sieve [2..]) \\ pms
+				previousPrimes = pms ++ currentPrimes
+				largestPrime = last currentPrimes
+				complement = ([n..largestPrime] \\ previousPrimes) in 
+			(foldr (:) [] complement) ++ complementPrimes largestPrime previousPrimes
+
+-------------
+-- Exercise 4
+-------------
+fermatTester :: Int -> [Integer] -> IO()
+fermatTester n (x:xs) = 
+	do 
+		resultF <- primeF n x
+		if not resultF
+		then fermatTester n xs 
+		else print $ "Failed at composite: " ++ show x ++ "."
+
+testF :: Int -> IO()
+testF n = fermatTester n composites 
+
+-------------
+-- Exercise 5
+-------------
+testC :: Int -> IO()
+testC n = fermatTester n carmichael		
+				
+carmichael :: [Integer]
+carmichael = [ (6*k+1)*(12*k+1)*(18*k+1) |
+	k <- [2..],
+	isPrime (6*k+1),
+	isPrime (12*k+1),
+	isPrime (18*k+1) ]

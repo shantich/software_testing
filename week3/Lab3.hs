@@ -24,8 +24,6 @@ entails f1 f2 = tautology (Impl f1 f2)
 equiv :: Form -> Form -> Bool
 equiv f1 f2 = tautology (Equiv f1 f2)
 
--- Time spent: 60 minutes
-
 
 ---------------------------
 -- Exercise 2
@@ -57,8 +55,6 @@ dist' :: Form -> Form -> Form
 dist' (Cnj f) p = Cnj (map (\ x -> dist' x p) f)
 dist' f (Cnj p) = Cnj (map (\ x -> dist' f x) p)
 dist' f p = Dsj [f, p]
-
--- time spent: ~4 hours
 
 
 ---------------------------
@@ -106,9 +102,6 @@ isValidCnj (Neg (Prop f)) = True
 isValidCnj (Dsj fs) = and (map isValidDsj fs)
 isValidCnj (Cnj fs) = and (map testGrammar fs)
 
--- Time Spent: ~6 hours
-
-
 
 ---------------------------
 -- Exercise 4
@@ -138,5 +131,3 @@ dsj2cls' (Dsj fs) = dsj2cls fs
 cnj2cls :: [Form] -> Clauses
 cnj2cls [] = [[]]
 cnj2cls (x:xs) = cnf2cls' x ++ cnj2cls xs
-
--- Time Spent: ~3 hours
